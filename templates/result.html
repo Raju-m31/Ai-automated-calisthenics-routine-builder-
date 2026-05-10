@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personalized Calisthenics Routine - Calibaf Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body data-goal-session-id="{{ goal_session_id }}">
+    <div class="container">
+        <header class="result-header">
+            <h1>🏋️ Your Personalized Calisthenics Routine</h1>
+            <p class="subtitle">Track your progress and complete your fitness journey</p>
+        </header>
+
+        <main>
+            <!-- Goal Status Widget -->
+            {% if goal_session_id %}
+            <div id="goal-status-widget" style="margin-bottom: 20px;">
+                <!-- Populated by JavaScript -->
+            </div>
+            {% endif %}
+
+            <!-- Progress Tracker -->
+            <div class="progress-tracker">
+                <h2>📊 Weekly Progress</h2>
+                <div class="progress-overview">
+                    <div class="progress-circle">
+                        <div class="progress-circle-inner">
+                            <span class="progress-percentage">0%</span>
+                        </div>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="completed-exercises">0</span>
+                            <span class="stat-label">Exercises Done</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-exercises">-</span>
+                            <span class="stat-label">Total Exercises</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="current-day">1</span>
+                            <span class="stat-label">Current Day</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="day-navigation">
+                    <button class="nav-btn" id="prev-day" disabled>⬅️ Previous Day</button>
+                    <span class="current-day-display">Day <span id="display-day">1</span> of 7</span>
+                    <button class="nav-btn" id="next-day">Next Day ➡️</button>
+                </div>
+            </div>
+
+            <!-- User Assessment Summary -->
+            <div class="assessment-card">
+                <h2>📊 Your Assessment</h2>
+                <div class="assessment-grid">
+                    <div class="assessment-item">
+                        <span class="label">Fitness Level:</span>
+                        <span class="value level-{{ level }}">{{ level.title() }}</span>
+                    </div>
+                    <div class="assessment-item">
+                        <span class="label">Max Push-ups:</span>
+                        <span class="value">{{ push_ups }}</span>
+                    </div>
+                    <div class="assessment-item">
+                        <span class="label">Max Pull-ups:</span>
+                        <span class="value">{{ pull_ups }}</span>
+                    </div>
+                    {% if goal %}
+                    <div class="assessment-item">
+                        <span class="label">Goal:</span>
+                        <span class="value">{{ goal.replace('_', ' ').title() }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                {% if goal_details %}
+                <div class="goal-details-box" style="margin-top: 15px; padding: 10px; background: #f0f4ff; border-left: 4px solid #667eea; border-radius: 4px;">
+                    <strong>Goal Details:</strong> {{ goal_details }}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Medical Information -->
+            {% if medical_summary or manual_reason %}
+            <div class="medical-card">
+                <h2>🏥 Health & Safety Notes</h2>
+                {% if medical_summary %}
+                <div class="medical-alert">
+                    <strong>Medical Analysis:</strong> {{ medical_summary }}
+                </div>
+                {% endif %}
+                {% if manual_reason %}
+                <div class="medical-note">
+                    <strong>Additional Notes:</strong> {{ manual_reason }}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- Daily Routine Display -->
+            <div class="routine-section">
+                <div class="day-header-display">
+                    <h2 id="day-title">Day 1: Loading...</h2>
+                    <div class="day-actions">
+                        <button class="action-btn" id="reset-day">🔄 Reset Day</button>
+                        <button class="action-btn complete-btn" id="complete-day">✅ Complete Day</button>
+                    </div>
+                </div>
+
+                <div class="exercises-container" id="exercises-container">
+                    <!-- Exercises will be loaded here by JavaScript -->
+                </div>
+
+                <div class="day-summary">
+                    <div class="day-progress">
+                        <h3>Day Progress</h3>
+                        <div class="mini-progress-bar">
+                            <div class="mini-progress-fill" id="day-progress-fill"></div>
+                        </div>
+                        <span class="day-completion-text" id="day-completion-text">0 of 0 exercises completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Overview -->
+            <div class="weekly-overview">
+                <h2>📅 Weekly Overview</h2>
+                <div class="week-grid">
+                    {% for day in weekly_plan %}
+                    <div class="week-day-card {{ 'completed' if loop.index <= 1 else '' }}" data-day="{{ loop.index }}">
+                        <div class="week-day-header">
+                            <span class="week-day-number">Day {{ loop.index }}</span>
+                            <span class="week-day-status">{{ '✅' if loop.index <= 1 else '⏳' }}</span>
+                        </div>
+                        <div class="week-day-name">{{ day.name }}</div>
+                        <div class="week-day-exercises">{{ day.exercises|length }} exercises</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Progression Tips -->
+            <div class="progression-card">
+                <h2>📈 Progression Guidelines</h2>
+                <div class="progression-tips">
+                    {% for tip in progression_tips %}
+                    <div class="tip-item">
+                        <span class="tip-bullet">💪</span>
+                        <span class="tip-text">{{ tip }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="notes-card">
+                <h2>⚠️ Important Training Notes</h2>
+                <ul class="training-notes">
+                    <li><strong>Warm-up:</strong> Always spend 5-10 minutes warming up before training</li>
+                    <li><strong>Form First:</strong> Quality over quantity - maintain proper form throughout</li>
+                    <li><strong>Progression:</strong> Only increase difficulty when you can complete all sets with good form</li>
+                    <li><strong>Recovery:</strong> Rest days are crucial for muscle growth and injury prevention</li>
+                    <li><strong>Nutrition:</strong> Fuel your body with adequate protein and calories for optimal results</li>
+                    <li><strong>Hydration:</strong> Stay well-hydrated before, during, and after workouts</li>
+                    <li><strong>Listen to Your Body:</strong> Stop if you feel pain (beyond normal muscle fatigue)</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="result-footer">
+            <a href="/" class="back-btn">🔄 Generate New Routine</a>
+            <p>Built with ❤️ by Calibaf Studio - Train Smart, Train Safe</p>
+        </footer>
+    </div>
+
+    <!-- Weekly Plan Data (for JavaScript) -->
+    <script>
+        const weeklyPlan = {{ weekly_plan|tojson }};
+        const userLevel = "{{ level }}";
+        const userPushUps = {{ push_ups }};
+        const userPullUps = {{ pull_ups }};
+    </script>
+    <script src="{{ url_for('static', filename='routine-tracker.js') }}"></script>
+</body>
+</html>

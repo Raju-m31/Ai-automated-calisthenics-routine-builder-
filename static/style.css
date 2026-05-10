@@ -1,0 +1,1066 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.status {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    padding: 10px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.status-label {
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.status-value {
+    font-weight: 700;
+}
+
+.status-value.active {
+    color: #4CAF50;
+}
+
+.status-value.inactive {
+    color: #ff9800;
+}
+
+/* Main content */
+main {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.welcome-card {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    border-left: 5px solid #667eea;
+}
+
+.welcome-card h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.welcome-card p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Form styles */
+.routine-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.form-section h3 {
+    color: #495057;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: inherit;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.input-hint {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Button styles */
+.form-actions {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.generate-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.generate-btn:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: white;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Result Page Styles */
+.result-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.result-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.result-header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Assessment Card */
+.assessment-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.assessment-card h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.assessment-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 4px solid #667eea;
+}
+
+.assessment-item .label {
+    display: block;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.assessment-item .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.value.level-beginner { color: #4CAF50; }
+.value.level-intermediate { color: #FF9800; }
+.value.level-advanced { color: #F44336; }
+.value.level-expert { color: #9C27B0; }
+
+/* Medical Card */
+.medical-card {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-left: 5px solid #ffc107;
+}
+
+.medical-card h2 {
+    color: #856404;
+    margin-bottom: 20px;
+}
+
+.medical-alert, .medical-note {
+    background: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Routine Section */
+.routine-section {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.routine-section h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.routine-intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* Weekly Calendar */
+.weekly-calendar {
+    display: grid;
+    gap: 25px;
+}
+
+.day-card {
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.day-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.day-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.day-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.medical-warning {
+    background: #ff9800;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.exercises-list {
+    padding: 25px;
+}
+
+.exercise-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid #667eea;
+}
+
+.exercise-item:last-child {
+    margin-bottom: 0;
+}
+
+.exercise-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.exercise-details {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.exercise-details span {
+    background: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.modifications {
+    background: #fff3cd;
+    padding: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.modifications h4 {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.modifications ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.modifications li {
+    color: #856404;
+    margin-bottom: 5px;
+}
+
+/* Progression Card */
+.progression-card {
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-left: 5px solid #4CAF50;
+}
+
+.progression-card h2 {
+    color: #2E7D32;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.progression-tips {
+    display: grid;
+    gap: 15px;
+}
+
+.tip-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.tip-bullet {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.tip-text {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Notes Card */
+.notes-card {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-left: 5px solid #FF9800;
+}
+
+.notes-card h2 {
+    color: #E65100;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.training-notes {
+    display: grid;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.training-notes li {
+    background: rgba(255,255,255,0.9);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #FF9800;
+    line-height: 1.5;
+}
+
+/* Footer */
+.result-footer {
+    text-align: center;
+    color: white;
+    padding: 30px 0;
+}
+
+.back-btn {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.back-btn:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-2px);
+}
+
+.result-footer p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design for Results */
+@media (max-width: 768px) {
+    .assessment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exercise-details {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .weekly-calendar {
+        gap: 15px;
+    }
+
+    .day-card {
+        margin: 0 -10px;
+    }
+
+    .exercises-list {
+        padding: 20px;
+    }
+
+    .result-header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .assessment-card,
+    .medical-card,
+    .routine-section,
+    .progression-card,
+    .notes-card {
+        padding: 20px;
+    }
+
+    .day-header {
+        padding: 15px;
+    }
+
+    .day-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .exercise-item {
+        padding: 15px;
+    }
+}
+
+/* Progress Tracker */
+.progress-tracker {
+    background: white;
+    border-radius: 20px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.progress-tracker h2 {
+    color: #333;
+    text-align: center;
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+}
+
+.progress-overview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.progress-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.progress-circle-inner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-percentage {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.progress-stats {
+    display: flex;
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 3px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border-radius: 25px;
+    width: 0%;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.day-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    color: #495057;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.current-day-display {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* Routine Section Updates */
+.day-header-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.day-header-display h2 {
+    color: #333;
+    margin: 0;
+}
+
+.day-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.complete-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+/* Exercise Items with Checkboxes */
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.exercise-info {
+    flex: 1;
+}
+
+.exercise-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.exercise-details {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.exercise-details span {
+    background: #f8f9fa;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: #495057;
+    border: 1px solid #e9ecef;
+}
+
+/* Checkbox Styles */
+.checkbox-container {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.checkbox-container input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.checkmark::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+    opacity: 1;
+}
+
+/* Exercise Completion States */
+.exercise-item.completed {
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    border-left-color: #4CAF50;
+    transform: scale(1.02);
+}
+
+.exercise-item.completed .exercise-name {
+    text-decoration: line-through;
+    color: #2E7D32;
+}
+
+/* Timer Styles */
+.exercise-timer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.timer-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.timer-btn:hover {
+    background: #5a67d8;
+    transform: translateY(-1px);
+}
+
+.timer-display {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Day Summary */
+.day-summary {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.day-summary h3 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.mini-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50 0%, #45a049 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.day-completion-text {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Weekly Overview */
+.weekly-overview {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.weekly-overview h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.week-day-card {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.week-day-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.week-day-card.completed {
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    border-color: #4CAF50;
+}
+
+.week-day-card.current {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e6eeff 100%);
+    transform: scale(1.05);
+}
+
+.week-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.week-day-number {
+    font-weight: 700;
+    color: #333;
+}
+
+.week-day-status {
+    font-size: 1.2rem;
+}
+
+.week-day-name {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.week-day-exercises {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+    font-weight: 600;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Additional Responsive Updates */
+@media (max-width: 768px) {
+    .progress-overview {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .progress-stats {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .day-header-display {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .day-actions {
+        justify-content: center;
+    }
+
+    .exercise-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .week-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .week-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .progress-circle-inner {
+        width: 70px;
+        height: 70px;
+    }
+
+    .progress-percentage {
+        font-size: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Review - Calibaf Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .review-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .review-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .review-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .review-header h1 {
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+        .review-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-box {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-name {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+        .review-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        .btn-continue {
+            background: #4CAF50;
+            color: white;
+        }
+        .btn-continue:hover {
+            background: #45a049;
+        }
+        .btn-change {
+            background: #FF9800;
+            color: white;
+        }
+        .btn-change:hover {
+            background: #e68900;
+        }
+        .goal-form {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            display: none;
+        }
+        .goal-form.show {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏋️ Calibaf Studio</h1>
+            <p class="subtitle">Goal Review & Adjustment</p>
+        </header>
+
+        <main>
+            <div class="review-container">
+                <div class="review-card">
+                    <div class="review-header">
+                        <h1>🎯 Goal Review</h1>
+                        <p>It's been {{ weeks_completed }} weeks since you started!</p>
+                    </div>
+
+                    <div class="review-stats">
+                        <div class="stat-box">
+                            <div class="stat-number">{{ weeks_completed }}</div>
+                            <div class="stat-name">Weeks Completed</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">{{ goal_data.goal.replace('_', ' ').title() }}</div>
+                            <div class="stat-name">Current Goal</div>
+                        </div>
+                    </div>
+
+                    <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                        <p><strong>Goal Details:</strong> {{ goal_data.goal_details or 'Not specified' }}</p>
+                    </div>
+
+                    <div class="action-buttons">
+                        <div class="btn-group">
+                            <button class="review-btn btn-continue" onclick="submitForm('continue')">
+                                ✅ Continue With Same Goal
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="review-btn btn-change" onclick="toggleGoalForm()">
+                                🔄 Change Goal
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="goal-form-container" class="goal-form">
+                        <form method="post" id="goal-update-form">
+                            <div class="form-group">
+                                <label for="new_goal">New Goal</label>
+                                <select id="new_goal" name="new_goal" required>
+                                    <option value="handstand">Master Handstand</option>
+                                    <option value="muscle_up">Perfect Muscle-Up</option>
+                                    <option value="planche">Progress to Planche</option>
+                                    <option value="front_lever">Front Lever Achievement</option>
+                                    <option value="strength">Overall Strength Building</option>
+                                    <option value="endurance">Endurance & Conditioning</option>
+                                    <option value="flexibility">Mobility & Flexibility</option>
+                                    <option value="general">General Fitness</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new_details">Goal Details (Optional)</label>
+                                <textarea id="new_details" name="new_details" placeholder="Be specific about what you want to achieve..."></textarea>
+                            </div>
+
+                            <input type="hidden" name="action" value="change">
+
+                            <button type="submit" class="review-btn btn-change" style="width: 100%; margin-top: 10px;">
+                                🚀 Update Goal & Create New Routine
+                            </button>
+                            <button type="button" class="review-btn" style="width: 100%; margin-top: 10px; background: #ccc; color: #333;" onclick="toggleGoalForm()">
+                                Cancel
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="review-card" style="background: #f0f4ff; border-left: 4px solid #667eea;">
+                    <h3>💡 Tips for Next Phase</h3>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>Review your progress from the past 4 weeks</li>
+                        <li>Assess what worked and what needs adjustment</li>
+                        <li>Consider increasing intensity or adding new skills</li>
+                        <li>Stay consistent - progress compounds over time!</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ for calisthenics enthusiasts</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleGoalForm() {
+            const form = document.getElementById('goal-form-container');
+            form.classList.toggle('show');
+        }
+
+        function submitForm(action) {
+            if (action === 'continue') {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.innerHTML = '<input type="hidden" name="action" value="continue">';
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+        document.getElementById('goal-update-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.target.submit();
+        });
+    </script>
+</body>
+</html>

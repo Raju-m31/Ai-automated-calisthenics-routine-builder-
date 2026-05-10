@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibaf Studio - Personalized Calisthenics Routine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏋️ Calibaf Studio</h1>
+            <p class="subtitle">Your Personalized Calisthenics Routine Generator</p>
+            <div class="status">
+                <span class="status-label">LLM Medical Analysis Status:</span>
+                <span class="status-value {{ 'active' if 'ON' in llm_status else 'inactive' }}">{{ llm_status }}</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="welcome-card">
+                <h2>Build Your Perfect Workout</h2>
+                <p>Enter your current fitness levels and any medical considerations to generate a customized calisthenics routine tailored just for you.</p>
+            </div>
+
+            <form action="/generate" method="post" class="routine-form">
+                <div class="form-section">
+                    <h3>🎯 Your Goal</h3>
+                    <div class="input-group">
+                        <label for="goal">Training Goal</label>
+                        <select id="goal" name="goal" required>
+                            <option value="">Select your primary goal...</option>
+                            <option value="handstand">Master Handstand</option>
+                            <option value="muscle_up">Perfect Muscle-Up</option>
+                            <option value="planche">Progress to Planche</option>
+                            <option value="front_lever">Front Lever Achievement</option>
+                            <option value="strength">Overall Strength Building</option>
+                            <option value="endurance">Endurance & Conditioning</option>
+                            <option value="flexibility">Mobility & Flexibility</option>
+                            <option value="general">General Fitness</option>
+                        </select>
+                        <span class="input-hint">Select the main skill or outcome you want to achieve</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="goal_details">Specific Goal Details (Optional)</label>
+                        <textarea id="goal_details" name="goal_details" rows="2" placeholder="E.g., 'I want to hold a handstand for 30 seconds' or 'Complete 10 clean muscle-ups'"></textarea>
+                        <span class="input-hint">Be specific! This helps us tailor your routine better</span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>💪 Fitness Assessment</h3>
+                    <div class="input-group">
+                        <label for="push_ups">Maximum Push-ups</label>
+                        <input type="number" id="push_ups" name="push_ups" min="0" max="100" required placeholder="e.g., 20">
+                        <span class="input-hint">How many push-ups can you do in one set?</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pull_ups">Maximum Pull-ups</label>
+                        <input type="number" id="pull_ups" name="pull_ups" min="0" max="50" required placeholder="e.g., 5">
+                        <span class="input-hint">How many pull-ups can you do in one set?</span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>🏥 Health & Safety</h3>
+                    <div class="input-group">
+                        <label for="medical">Medical Conditions/Injuries</label>
+                        <select id="medical" name="medical">
+                            <option value="">None - I'm injury-free</option>
+                            <option value="shoulder_injury">Shoulder Injury</option>
+                            <option value="back_injury">Back Injury</option>
+                            <option value="wrist_injury">Wrist Injury</option>
+                            <option value="knee_injury">Knee Injury</option>
+                            <option value="elbow_injury">Elbow Injury</option>
+                            <option value="neck_injury">Neck Injury</option>
+                        </select>
+                        <span class="input-hint">Select any existing injuries or conditions</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="manual_reason">Additional Medical Notes</label>
+                        <textarea id="manual_reason" name="manual_reason" rows="4" placeholder="Describe any specific pain, limitations, or medical advice from your doctor (e.g., 'left shoulder pain during overhead movements', 'avoid high-impact exercises')"></textarea>
+                        <span class="input-hint">Optional: Provide more details for safer recommendations</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="generate-btn">
+                        🚀 Generate My Routine
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ for calisthenics enthusiasts</p>
+        </footer>
+    </div>
+</body>
+</html>
