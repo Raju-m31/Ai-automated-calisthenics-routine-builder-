@@ -104,5 +104,3 @@ See [SETUP_DATABASE.md](SETUP_DATABASE.md) for:
 3. **Manage Data**: Add, edit, or delete clients via web interface
 4. **Generate Routines**: Use home page for routine generation
 5. **Export Results**: Export client data to CSV
-
-Replace the dummy dataset with actual client data for authenticity.
