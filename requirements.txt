@@ -3,3 +3,6 @@ scikit-learn
 pandas
 numpy
 requests
+Flask-SQLAlchemy
+mysql-connector-python
+openpyxl

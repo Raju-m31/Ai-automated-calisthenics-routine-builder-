@@ -49,9 +49,18 @@
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
+                
+                <!-- Week Navigation -->
+                <div class="week-navigation" style="margin-bottom: 15px;">
+                    <button class="nav-btn" id="prev-week" disabled>⬅️ Previous Week</button>
+                    <span class="current-week-display">Week <span id="display-week">1</span> of 4</span>
+                    <button class="nav-btn" id="next-week">Next Week ➡️</button>
+                </div>
+                
+                <!-- Day Navigation -->
                 <div class="day-navigation">
                     <button class="nav-btn" id="prev-day" disabled>⬅️ Previous Day</button>
-                    <span class="current-day-display">Day <span id="display-day">1</span> of 7</span>
+                    <span class="current-day-display">Week <span id="week-in-day">1</span>, Day <span id="display-day">1</span> of 7</span>
                     <button class="nav-btn" id="next-day">Next Day ➡️</button>
                 </div>
             </div>
@@ -181,10 +190,11 @@
 
     <!-- Weekly Plan Data (for JavaScript) -->
     <script>
-        const weeklyPlan = {{ weekly_plan|tojson }};
-        const userLevel = "{{ level }}";
-        const userPushUps = {{ push_ups }};
-        const userPullUps = {{ pull_ups }};
+        window.weeklyPlan = {{ weekly_plan|tojson }};
+        window.fourWeekPlan = {{ four_week_plan|tojson }};
+        window.userLevel = "{{ level }}";
+        window.userPushUps = {{ push_ups }};
+        window.userPullUps = {{ pull_ups }};
     </script>
     <script src="{{ url_for('static', filename='routine-tracker.js') }}"></script>
 </body>

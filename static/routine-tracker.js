@@ -1,5 +1,6 @@
 class RoutineTracker {
     constructor() {
+        this.currentWeek = 1;
         this.currentDay = 1;
         this.completedExercises = new Set();
         this.dayCompletedStatus = new Array(8).fill(false); // Index 1-7 for days
@@ -7,6 +8,9 @@ class RoutineTracker {
         this.activeTimers = {}; // Store active timers
         this.goalSessionId = document.body.getAttribute('data-goal-session-id') || null;
         this.sessionKey = `routine_progress_${this.goalSessionId || 'default'}`; // Unique key per session
+        
+        // Will be set from global fourWeekPlan
+        this.fourWeekPlan = window.fourWeekPlan || [];
 
         this.initializeElements();
         this.loadProgress();
@@ -14,6 +18,9 @@ class RoutineTracker {
         this.updateProgress();
         this.bindEvents();
         this.loadGoalStatus();
+        
+        // Check if week 4 is complete
+        this.checkWeek4Completion();
     }
 
     loadGoalStatus() {
@@ -50,10 +57,14 @@ class RoutineTracker {
         this.totalExercisesCount = document.getElementById('total-exercises');
         this.currentDayDisplay = document.getElementById('current-day');
         this.displayDay = document.getElementById('display-day');
+        this.displayWeek = document.getElementById('display-week');
+        this.weekInDay = document.getElementById('week-in-day');
         this.dayProgressFill = document.getElementById('day-progress-fill');
         this.dayCompletionText = document.getElementById('day-completion-text');
         this.prevDayBtn = document.getElementById('prev-day');
         this.nextDayBtn = document.getElementById('next-day');
+        this.prevWeekBtn = document.getElementById('prev-week');
+        this.nextWeekBtn = document.getElementById('next-week');
         this.resetDayBtn = document.getElementById('reset-day');
         this.completeDayBtn = document.getElementById('complete-day');
     }
@@ -61,6 +72,8 @@ class RoutineTracker {
     bindEvents() {
         this.prevDayBtn.addEventListener('click', () => this.navigateDay(-1));
         this.nextDayBtn.addEventListener('click', () => this.navigateDay(1));
+        this.prevWeekBtn?.addEventListener('click', () => this.navigateWeek(-1));
+        this.nextWeekBtn?.addEventListener('click', () => this.navigateWeek(1));
         this.resetDayBtn.addEventListener('click', () => this.resetDay());
         this.completeDayBtn.addEventListener('click', () => this.completeDay());
 
@@ -71,17 +84,30 @@ class RoutineTracker {
         });
     }
 
+    getCurrentWeekPlan() {
+        if (!this.fourWeekPlan || !this.fourWeekPlan[this.currentWeek - 1]) {
+            // Fallback to weeklyPlan if available
+            return window.weeklyPlan || [];
+        }
+        return this.fourWeekPlan[this.currentWeek - 1];
+    }
+
     displayCurrentDay() {
-        const dayData = weeklyPlan[this.currentDay - 1];
+        const weekPlan = this.getCurrentWeekPlan();
+        const dayData = weekPlan[this.currentDay - 1];
         if (!dayData) return;
 
         // Update day title
-        this.dayTitle.textContent = `Day ${this.currentDay}: ${dayData.name}`;
+        this.dayTitle.textContent = `Week ${this.currentWeek}, Day ${this.currentDay}: ${dayData.name}`;
 
         // Update navigation
         this.displayDay.textContent = this.currentDay;
+        this.displayWeek.textContent = this.currentWeek;
+        this.weekInDay.textContent = this.currentWeek;
         this.prevDayBtn.disabled = this.currentDay === 1;
         this.nextDayBtn.disabled = this.currentDay === 7;
+        this.prevWeekBtn.disabled = this.currentWeek === 1;
+        this.nextWeekBtn.disabled = this.currentWeek === 4;
 
         // Display exercises
         this.displayExercises(dayData);
@@ -94,7 +120,7 @@ class RoutineTracker {
         this.exercisesContainer.innerHTML = '';
 
         dayData.exercises.forEach((exercise, index) => {
-            const exerciseId = `day${this.currentDay}-exercise${index}`;
+            const exerciseId = `w${this.currentWeek}d${this.currentDay}-exercise${index}`;
             const isCompleted = this.completedExercises.has(exerciseId);
 
             const exerciseElement = document.createElement('div');
@@ -237,13 +263,26 @@ class RoutineTracker {
     }
 
     updateProgress() {
-        const totalPossibleExercises = 7 * 4; // Assuming average 4 exercises per day
-        const completedCount = this.completedExercises.size;
-        const percentage = Math.round((completedCount / totalPossibleExercises) * 100);
+        // Calculate progress as percentage of current week
+        const weekPlan = this.getCurrentWeekPlan();
+        let totalExercisesInWeek = 0;
+        weekPlan.forEach(day => {
+            totalExercisesInWeek += day.exercises.length;
+        });
+
+        // Count completed exercises in this week only
+        let completedThisWeek = 0;
+        this.completedExercises.forEach(exerciseId => {
+            if (exerciseId.startsWith(`w${this.currentWeek}`)) {
+                completedThisWeek++;
+            }
+        });
+
+        const percentage = totalExercisesInWeek > 0 ? Math.round((completedThisWeek / totalExercisesInWeek) * 100) : 0;
 
         this.progressPercentage.textContent = `${percentage}%`;
         this.progressFill.style.width = `${percentage}%`;
-        this.completedExercisesCount.textContent = completedCount;
+        this.completedExercisesCount.textContent = completedThisWeek;
     }
 
     updateDayCompletionStatus() {
@@ -293,7 +332,60 @@ class RoutineTracker {
             this.currentDay = newDay;
             this.currentDayDisplay.textContent = this.currentDay;
             this.displayCurrentDay();
+            this.saveProgress();
         }
+    }
+
+    navigateWeek(direction) {
+        const newWeek = this.currentWeek + direction;
+        if (newWeek >= 1 && newWeek <= 4) {
+            this.currentWeek = newWeek;
+            this.currentDay = 1; // Reset to day 1 when changing weeks
+            this.dayCompletedStatus = new Array(8).fill(false); // Reset day completion for new week
+            this.displayCurrentDay();
+            this.updateProgress();
+            this.saveProgress();
+        }
+    }
+
+    checkWeek4Completion() {
+        // Check if all 7 days of week 4 are completed
+        const allDaysCompleted = this.dayCompletedStatus.slice(1, 8).every(status => status);
+        if (this.currentWeek === 4 && allDaysCompleted && this.completedExercises.size > 0) {
+            // Show 4-week review modal after a small delay
+            setTimeout(() => this.showWeek4Review(), 1000);
+        }
+    }
+
+    showWeek4Review() {
+        // Check if review hasn't been shown yet
+        if (localStorage.getItem(`${this.sessionKey}_review_shown`)) {
+            return;
+        }
+
+        const goalSessionId = this.goalSessionId;
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content" style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                <h2 style="margin-top: 0; color: #667eea;">🎉 4-Week Cycle Complete!</h2>
+                <p style="font-size: 16px; color: #555;">Congratulations on finishing 4 weeks of training!</p>
+                <p style="font-size: 14px; color: #999;">Would you like to continue with the same goal or switch to a new one?</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+                    <button onclick="window.location.href='/review-goal/${goalSessionId}'" style="padding: 12px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                        ✅ Continue Same Goal
+                    </button>
+                    <button onclick="window.location.href='/'" style="padding: 12px; background: #ff9500; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                        🔄 Switch Goal
+                    </button>
+                </div>
+            </div>
+        `;
+        modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 10000;';
+        document.body.appendChild(modal);
+
+        // Mark review as shown
+        localStorage.setItem(`${this.sessionKey}_review_shown`, 'true');
     }
 
     resetDay() {
@@ -331,52 +423,9 @@ class RoutineTracker {
 
         // Show success message
         this.showNotification('Day completed! Great work! 🎉');
-    }
-
-    startTimer(exerciseId, sets) {
-        const timerDisplay = document.querySelector(`#timer-${exerciseId} .timer-display`);
-        const timerBtn = document.querySelector(`#timer-${exerciseId} .timer-btn`);
-
-        if (this.currentTimer) {
-            clearInterval(this.currentTimer);
-        }
-
-        let timeLeft = 90; // 90 seconds rest between sets
-        timerBtn.textContent = '⏸️ Pause Timer';
-        timerBtn.onclick = () => this.pauseTimer();
-
-        this.currentTimer = setInterval(() => {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-            if (timeLeft <= 0) {
-                clearInterval(this.currentTimer);
-                timerDisplay.textContent = 'Rest Complete!';
-                timerBtn.textContent = '⏱️ Start Next Set';
-                timerBtn.onclick = () => this.startTimer(exerciseId, sets);
-
-                // Play notification sound (if supported)
-                if ('vibrate' in navigator) {
-                    navigator.vibrate(200);
-                }
-            }
-            timeLeft--;
-        }, 1000);
-    }
-
-    pauseTimer() {
-        if (this.currentTimer) {
-            clearInterval(this.currentTimer);
-            this.currentTimer = null;
-            document.querySelector('.timer-btn').textContent = '▶️ Resume Timer';
-            document.querySelector('.timer-btn').onclick = () => this.resumeTimer();
-        }
-    }
-
-    resumeTimer() {
-        // This would need to be implemented with saved time
-        this.showNotification('Timer resumed');
+        
+        // Check if week 4 is complete
+        this.checkWeek4Completion();
     }
 
     showNotification(message) {
@@ -402,6 +451,7 @@ class RoutineTracker {
             completedExercises: Array.from(this.completedExercises),
             dayCompletedStatus: this.dayCompletedStatus,
             currentDay: this.currentDay,
+            currentWeek: this.currentWeek,
             lastUpdated: new Date().toISOString()
         };
 
@@ -415,6 +465,7 @@ class RoutineTracker {
             this.completedExercises = new Set(progress.completedExercises || []);
             this.dayCompletedStatus = progress.dayCompletedStatus || new Array(8).fill(false);
             this.currentDay = progress.currentDay || 1;
+            this.currentWeek = progress.currentWeek || 1;
         }
     }
 }

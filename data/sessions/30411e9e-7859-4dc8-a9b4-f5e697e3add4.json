@@ -1,0 +1,813 @@
+{
+  "id": "30411e9e-7859-4dc8-a9b4-f5e697e3add4",
+  "goal": "handstand",
+  "goal_details": "",
+  "push_ups": 8,
+  "pull_ups": 2,
+  "level": "beginner",
+  "start_date": "2026-05-21T22:07:53.434105",
+  "week_4_review_date": "2026-06-18T22:07:53.434110",
+  "completed_weeks": 0,
+  "four_week_routine": [
+    [
+      {
+        "name": "Upper Body Push Focus",
+        "exercises": [
+          {
+            "name": "Wall Push-ups",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "60s"
+          },
+          {
+            "name": "Knee Push-ups",
+            "sets": 3,
+            "reps": "6-10",
+            "rest": "60s"
+          },
+          {
+            "name": "Plank",
+            "sets": 3,
+            "reps": "20-30s",
+            "rest": "45s"
+          },
+          {
+            "name": "Wall Sit",
+            "sets": 3,
+            "reps": "15-25s",
+            "rest": "45s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Lower Body & Core",
+        "exercises": [
+          {
+            "name": "Bodyweight Squats",
+            "sets": 3,
+            "reps": "10-15",
+            "rest": "60s"
+          },
+          {
+            "name": "Lunges (each leg)",
+            "sets": 3,
+            "reps": "6-8",
+            "rest": "60s"
+          },
+          {
+            "name": "Glute Bridges",
+            "sets": 3,
+            "reps": "10-15",
+            "rest": "45s"
+          },
+          {
+            "name": "Bicycle Crunches",
+            "sets": 3,
+            "reps": "10-15",
+            "rest": "45s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Upper Body Pull Focus",
+        "exercises": [
+          {
+            "name": "Assisted Pull-ups (or Inverted Rows)",
+            "sets": 3,
+            "reps": "5-8",
+            "rest": "60s"
+          },
+          {
+            "name": "Negative Pull-ups",
+            "sets": 3,
+            "reps": "3-5",
+            "rest": "60s"
+          },
+          {
+            "name": "Superman Holds",
+            "sets": 3,
+            "reps": "15-20s",
+            "rest": "45s"
+          },
+          {
+            "name": "Door Frame Rows",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "45s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Push-ups (knee or wall)",
+            "sets": 3,
+            "reps": "6-10",
+            "rest": "45s"
+          },
+          {
+            "name": "Bodyweight Squats",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "45s"
+          },
+          {
+            "name": "Plank",
+            "sets": 3,
+            "reps": "20-30s",
+            "rest": "45s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 3,
+            "reps": "10-15",
+            "rest": "45s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Walking Lunges",
+            "sets": 3,
+            "reps": "8-10 each leg",
+            "rest": "60s"
+          },
+          {
+            "name": "Arm Circles",
+            "sets": 3,
+            "reps": "10 each direction",
+            "rest": "30s"
+          },
+          {
+            "name": "Cat-Cow Stretch",
+            "sets": 3,
+            "reps": "8-10",
+            "rest": "30s"
+          },
+          {
+            "name": "Child's Pose",
+            "sets": 2,
+            "reps": "30s hold",
+            "rest": "30s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Core & Mobility",
+        "exercises": [
+          {
+            "name": "Russian Twists",
+            "sets": 3,
+            "reps": "10-15 each side",
+            "rest": "45s"
+          },
+          {
+            "name": "Leg Raises",
+            "sets": 3,
+            "reps": "6-10",
+            "rest": "45s"
+          },
+          {
+            "name": "Bird-Dog",
+            "sets": 3,
+            "reps": "8-10 each side",
+            "rest": "30s"
+          },
+          {
+            "name": "Cobra Stretch",
+            "sets": 3,
+            "reps": "20-30s hold",
+            "rest": "30s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Rest Day",
+        "exercises": [
+          {
+            "name": "Light Walking",
+            "sets": 1,
+            "reps": "20-30 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Full Body Stretching",
+            "sets": 1,
+            "reps": "10-15 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 1
+      }
+    ],
+    [
+      {
+        "name": "Upper Body Push Focus",
+        "exercises": [
+          {
+            "name": "Wall Push-ups",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "60s"
+          },
+          {
+            "name": "Knee Push-ups",
+            "sets": 4,
+            "reps": "8-12",
+            "rest": "60s"
+          },
+          {
+            "name": "Plank",
+            "sets": 4,
+            "reps": "20-30s",
+            "rest": "45s"
+          },
+          {
+            "name": "Wall Sit",
+            "sets": 4,
+            "reps": "15-25s",
+            "rest": "45s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Lower Body & Core",
+        "exercises": [
+          {
+            "name": "Bodyweight Squats",
+            "sets": 4,
+            "reps": "12-17",
+            "rest": "60s"
+          },
+          {
+            "name": "Lunges (each leg)",
+            "sets": 4,
+            "reps": "8-10",
+            "rest": "60s"
+          },
+          {
+            "name": "Glute Bridges",
+            "sets": 4,
+            "reps": "12-17",
+            "rest": "45s"
+          },
+          {
+            "name": "Bicycle Crunches",
+            "sets": 4,
+            "reps": "12-17",
+            "rest": "45s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Upper Body Pull Focus",
+        "exercises": [
+          {
+            "name": "Assisted Pull-ups (or Inverted Rows)",
+            "sets": 4,
+            "reps": "7-10",
+            "rest": "60s"
+          },
+          {
+            "name": "Negative Pull-ups",
+            "sets": 4,
+            "reps": "5-7",
+            "rest": "60s"
+          },
+          {
+            "name": "Superman Holds",
+            "sets": 4,
+            "reps": "15-20s",
+            "rest": "45s"
+          },
+          {
+            "name": "Door Frame Rows",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "45s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Push-ups (knee or wall)",
+            "sets": 4,
+            "reps": "8-12",
+            "rest": "45s"
+          },
+          {
+            "name": "Bodyweight Squats",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "45s"
+          },
+          {
+            "name": "Plank",
+            "sets": 4,
+            "reps": "20-30s",
+            "rest": "45s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 4,
+            "reps": "12-17",
+            "rest": "45s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Walking Lunges",
+            "sets": 4,
+            "reps": "10-12 each leg",
+            "rest": "60s"
+          },
+          {
+            "name": "Arm Circles",
+            "sets": 4,
+            "reps": "10 each direction",
+            "rest": "30s"
+          },
+          {
+            "name": "Cat-Cow Stretch",
+            "sets": 4,
+            "reps": "10-12",
+            "rest": "30s"
+          },
+          {
+            "name": "Child's Pose",
+            "sets": 3,
+            "reps": "30s hold",
+            "rest": "30s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Core & Mobility",
+        "exercises": [
+          {
+            "name": "Russian Twists",
+            "sets": 4,
+            "reps": "12-17 each side",
+            "rest": "45s"
+          },
+          {
+            "name": "Leg Raises",
+            "sets": 4,
+            "reps": "8-12",
+            "rest": "45s"
+          },
+          {
+            "name": "Bird-Dog",
+            "sets": 4,
+            "reps": "10-12 each side",
+            "rest": "30s"
+          },
+          {
+            "name": "Cobra Stretch",
+            "sets": 4,
+            "reps": "20-30s hold",
+            "rest": "30s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Rest Day",
+        "exercises": [
+          {
+            "name": "Light Walking",
+            "sets": 2,
+            "reps": "22-32 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Full Body Stretching",
+            "sets": 2,
+            "reps": "12-17 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 2
+      }
+    ],
+    [
+      {
+        "name": "Upper Body Push Focus",
+        "exercises": [
+          {
+            "name": "Wall Push-ups",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "60s"
+          },
+          {
+            "name": "Knee Push-ups",
+            "sets": 5,
+            "reps": "9-13",
+            "rest": "60s"
+          },
+          {
+            "name": "Plank",
+            "sets": 5,
+            "reps": "20-30s",
+            "rest": "45s"
+          },
+          {
+            "name": "Wall Sit",
+            "sets": 5,
+            "reps": "15-25s",
+            "rest": "45s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Lower Body & Core",
+        "exercises": [
+          {
+            "name": "Bodyweight Squats",
+            "sets": 5,
+            "reps": "13-18",
+            "rest": "60s"
+          },
+          {
+            "name": "Lunges (each leg)",
+            "sets": 5,
+            "reps": "9-11",
+            "rest": "60s"
+          },
+          {
+            "name": "Glute Bridges",
+            "sets": 5,
+            "reps": "13-18",
+            "rest": "45s"
+          },
+          {
+            "name": "Bicycle Crunches",
+            "sets": 5,
+            "reps": "13-18",
+            "rest": "45s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Upper Body Pull Focus",
+        "exercises": [
+          {
+            "name": "Assisted Pull-ups (or Inverted Rows)",
+            "sets": 5,
+            "reps": "8-11",
+            "rest": "60s"
+          },
+          {
+            "name": "Negative Pull-ups",
+            "sets": 5,
+            "reps": "6-8",
+            "rest": "60s"
+          },
+          {
+            "name": "Superman Holds",
+            "sets": 5,
+            "reps": "15-20s",
+            "rest": "45s"
+          },
+          {
+            "name": "Door Frame Rows",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "45s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Push-ups (knee or wall)",
+            "sets": 5,
+            "reps": "9-13",
+            "rest": "45s"
+          },
+          {
+            "name": "Bodyweight Squats",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "45s"
+          },
+          {
+            "name": "Plank",
+            "sets": 5,
+            "reps": "20-30s",
+            "rest": "45s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 5,
+            "reps": "13-18",
+            "rest": "45s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Walking Lunges",
+            "sets": 5,
+            "reps": "11-13 each leg",
+            "rest": "60s"
+          },
+          {
+            "name": "Arm Circles",
+            "sets": 5,
+            "reps": "10 each direction",
+            "rest": "30s"
+          },
+          {
+            "name": "Cat-Cow Stretch",
+            "sets": 5,
+            "reps": "11-13",
+            "rest": "30s"
+          },
+          {
+            "name": "Child's Pose",
+            "sets": 4,
+            "reps": "30s hold",
+            "rest": "30s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Core & Mobility",
+        "exercises": [
+          {
+            "name": "Russian Twists",
+            "sets": 5,
+            "reps": "13-18 each side",
+            "rest": "45s"
+          },
+          {
+            "name": "Leg Raises",
+            "sets": 5,
+            "reps": "9-13",
+            "rest": "45s"
+          },
+          {
+            "name": "Bird-Dog",
+            "sets": 5,
+            "reps": "11-13 each side",
+            "rest": "30s"
+          },
+          {
+            "name": "Cobra Stretch",
+            "sets": 5,
+            "reps": "20-30s hold",
+            "rest": "30s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Rest Day",
+        "exercises": [
+          {
+            "name": "Light Walking",
+            "sets": 3,
+            "reps": "23-33 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Full Body Stretching",
+            "sets": 3,
+            "reps": "13-18 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 3
+      }
+    ],
+    [
+      {
+        "name": "Upper Body Push Focus",
+        "exercises": [
+          {
+            "name": "Wall Push-ups",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "51s"
+          },
+          {
+            "name": "Knee Push-ups",
+            "sets": 5,
+            "reps": "10-14",
+            "rest": "51s"
+          },
+          {
+            "name": "Plank",
+            "sets": 5,
+            "reps": "20-30s",
+            "rest": "38s"
+          },
+          {
+            "name": "Wall Sit",
+            "sets": 5,
+            "reps": "15-25s",
+            "rest": "38s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Lower Body & Core",
+        "exercises": [
+          {
+            "name": "Bodyweight Squats",
+            "sets": 5,
+            "reps": "14-19",
+            "rest": "51s"
+          },
+          {
+            "name": "Lunges (each leg)",
+            "sets": 5,
+            "reps": "10-12",
+            "rest": "51s"
+          },
+          {
+            "name": "Glute Bridges",
+            "sets": 5,
+            "reps": "14-19",
+            "rest": "38s"
+          },
+          {
+            "name": "Bicycle Crunches",
+            "sets": 5,
+            "reps": "14-19",
+            "rest": "38s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Upper Body Pull Focus",
+        "exercises": [
+          {
+            "name": "Assisted Pull-ups (or Inverted Rows)",
+            "sets": 5,
+            "reps": "9-12",
+            "rest": "51s"
+          },
+          {
+            "name": "Negative Pull-ups",
+            "sets": 5,
+            "reps": "7-9",
+            "rest": "51s"
+          },
+          {
+            "name": "Superman Holds",
+            "sets": 5,
+            "reps": "15-20s",
+            "rest": "38s"
+          },
+          {
+            "name": "Door Frame Rows",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "38s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Push-ups (knee or wall)",
+            "sets": 5,
+            "reps": "10-14",
+            "rest": "38s"
+          },
+          {
+            "name": "Bodyweight Squats",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "38s"
+          },
+          {
+            "name": "Plank",
+            "sets": 5,
+            "reps": "20-30s",
+            "rest": "38s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 5,
+            "reps": "14-19",
+            "rest": "38s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Walking Lunges",
+            "sets": 5,
+            "reps": "12-14 each leg",
+            "rest": "51s"
+          },
+          {
+            "name": "Arm Circles",
+            "sets": 5,
+            "reps": "10 each direction",
+            "rest": "25s"
+          },
+          {
+            "name": "Cat-Cow Stretch",
+            "sets": 5,
+            "reps": "12-14",
+            "rest": "25s"
+          },
+          {
+            "name": "Child's Pose",
+            "sets": 4,
+            "reps": "30s hold",
+            "rest": "25s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Core & Mobility",
+        "exercises": [
+          {
+            "name": "Russian Twists",
+            "sets": 5,
+            "reps": "14-19 each side",
+            "rest": "38s"
+          },
+          {
+            "name": "Leg Raises",
+            "sets": 5,
+            "reps": "10-14",
+            "rest": "38s"
+          },
+          {
+            "name": "Bird-Dog",
+            "sets": 5,
+            "reps": "12-14 each side",
+            "rest": "25s"
+          },
+          {
+            "name": "Cobra Stretch",
+            "sets": 5,
+            "reps": "20-30s hold",
+            "rest": "25s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Rest Day",
+        "exercises": [
+          {
+            "name": "Light Walking",
+            "sets": 3,
+            "reps": "24-34 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Full Body Stretching",
+            "sets": 3,
+            "reps": "14-19 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 4
+      }
+    ]
+  ]
+}

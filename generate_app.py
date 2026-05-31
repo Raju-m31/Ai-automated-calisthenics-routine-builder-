@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, jsonify, redirect
+"""Generate new app.py with MySQL database integration"""
+
+new_app_content = '''from flask import Flask, render_template, request, jsonify, redirect
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -209,3 +211,10 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True, host='0.0.0.0', port=5000)
+'''
+
+# Write the new app.py
+with open('app.py', 'w', encoding='utf-8') as f:
+    f.write(new_app_content)
+
+print("[DONE] app.py updated with MySQL database integration!")

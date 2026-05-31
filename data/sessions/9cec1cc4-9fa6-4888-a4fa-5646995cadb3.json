@@ -1,0 +1,837 @@
+{
+  "id": "9cec1cc4-9fa6-4888-a4fa-5646995cadb3",
+  "goal": "muscle_up",
+  "goal_details": "",
+  "push_ups": 21,
+  "pull_ups": 8,
+  "level": "intermediate",
+  "start_date": "2026-05-21T22:09:13.283291",
+  "week_4_review_date": "2026-06-18T22:09:13.283297",
+  "completed_weeks": 0,
+  "four_week_routine": [
+    [
+      {
+        "name": "Push Day - Chest & Triceps",
+        "exercises": [
+          {
+            "name": "Standard Push-ups",
+            "sets": 4,
+            "reps": "8-12",
+            "rest": "90s"
+          },
+          {
+            "name": "Diamond Push-ups",
+            "sets": 3,
+            "reps": "6-10",
+            "rest": "90s"
+          },
+          {
+            "name": "Archer Push-ups",
+            "sets": 3,
+            "reps": "4-6 each side",
+            "rest": "90s"
+          },
+          {
+            "name": "Tricep Dips (using chair)",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "75s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Pull Day - Back & Biceps",
+        "exercises": [
+          {
+            "name": "Pull-ups",
+            "sets": 4,
+            "reps": "6-10",
+            "rest": "90s"
+          },
+          {
+            "name": "Wide Grip Pull-ups",
+            "sets": 3,
+            "reps": "5-8",
+            "rest": "90s"
+          },
+          {
+            "name": "Inverted Rows",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "75s"
+          },
+          {
+            "name": "Chin-ups",
+            "sets": 3,
+            "reps": "4-8",
+            "rest": "90s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Legs & Core",
+        "exercises": [
+          {
+            "name": "Pistol Squats",
+            "sets": 3,
+            "reps": "3-5 each leg",
+            "rest": "120s"
+          },
+          {
+            "name": "Bulgarian Split Squats",
+            "sets": 3,
+            "reps": "6-8 each leg",
+            "rest": "90s"
+          },
+          {
+            "name": "Calf Raises",
+            "sets": 4,
+            "reps": "15-20",
+            "rest": "60s"
+          },
+          {
+            "name": "Hanging Leg Raises",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "75s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Upper Body Mixed",
+        "exercises": [
+          {
+            "name": "Push-ups",
+            "sets": 3,
+            "reps": "10-15",
+            "rest": "75s"
+          },
+          {
+            "name": "Pull-ups",
+            "sets": 3,
+            "reps": "6-10",
+            "rest": "90s"
+          },
+          {
+            "name": "Dips",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "75s"
+          },
+          {
+            "name": "Plank",
+            "sets": 3,
+            "reps": "45-60s",
+            "rest": "60s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Burpees",
+            "sets": 3,
+            "reps": "6-10",
+            "rest": "90s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 3,
+            "reps": "20-30 each leg",
+            "rest": "60s"
+          },
+          {
+            "name": "Jump Squats",
+            "sets": 3,
+            "reps": "8-12",
+            "rest": "75s"
+          },
+          {
+            "name": "Superman to Push-up",
+            "sets": 3,
+            "reps": "6-8",
+            "rest": "90s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Core & Conditioning",
+        "exercises": [
+          {
+            "name": "Dragon Flags",
+            "sets": 3,
+            "reps": "3-5",
+            "rest": "120s"
+          },
+          {
+            "name": "L-Sit",
+            "sets": 3,
+            "reps": "10-20s",
+            "rest": "90s"
+          },
+          {
+            "name": "Russian Twists",
+            "sets": 3,
+            "reps": "15-20 each side",
+            "rest": "60s"
+          },
+          {
+            "name": "Flutter Kicks",
+            "sets": 3,
+            "reps": "20-30",
+            "rest": "45s"
+          }
+        ],
+        "week": 1
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Yoga Flow",
+            "sets": 1,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Mobility Work",
+            "sets": 1,
+            "reps": "15 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Light Cardio",
+            "sets": 1,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 1
+      }
+    ],
+    [
+      {
+        "name": "Push Day - Chest & Triceps",
+        "exercises": [
+          {
+            "name": "Standard Push-ups",
+            "sets": 5,
+            "reps": "10-14",
+            "rest": "90s"
+          },
+          {
+            "name": "Diamond Push-ups",
+            "sets": 4,
+            "reps": "8-12",
+            "rest": "90s"
+          },
+          {
+            "name": "Archer Push-ups",
+            "sets": 4,
+            "reps": "6-8 each side",
+            "rest": "90s"
+          },
+          {
+            "name": "Tricep Dips (using chair)",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "75s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Pull Day - Back & Biceps",
+        "exercises": [
+          {
+            "name": "Pull-ups",
+            "sets": 5,
+            "reps": "8-12",
+            "rest": "90s"
+          },
+          {
+            "name": "Wide Grip Pull-ups",
+            "sets": 4,
+            "reps": "7-10",
+            "rest": "90s"
+          },
+          {
+            "name": "Inverted Rows",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "75s"
+          },
+          {
+            "name": "Chin-ups",
+            "sets": 4,
+            "reps": "6-10",
+            "rest": "90s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Legs & Core",
+        "exercises": [
+          {
+            "name": "Pistol Squats",
+            "sets": 4,
+            "reps": "5-7 each leg",
+            "rest": "120s"
+          },
+          {
+            "name": "Bulgarian Split Squats",
+            "sets": 4,
+            "reps": "8-10 each leg",
+            "rest": "90s"
+          },
+          {
+            "name": "Calf Raises",
+            "sets": 5,
+            "reps": "17-22",
+            "rest": "60s"
+          },
+          {
+            "name": "Hanging Leg Raises",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "75s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Upper Body Mixed",
+        "exercises": [
+          {
+            "name": "Push-ups",
+            "sets": 4,
+            "reps": "12-17",
+            "rest": "75s"
+          },
+          {
+            "name": "Pull-ups",
+            "sets": 4,
+            "reps": "8-12",
+            "rest": "90s"
+          },
+          {
+            "name": "Dips",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "75s"
+          },
+          {
+            "name": "Plank",
+            "sets": 4,
+            "reps": "45-60s",
+            "rest": "60s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Burpees",
+            "sets": 4,
+            "reps": "8-12",
+            "rest": "90s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 4,
+            "reps": "22-32 each leg",
+            "rest": "60s"
+          },
+          {
+            "name": "Jump Squats",
+            "sets": 4,
+            "reps": "10-14",
+            "rest": "75s"
+          },
+          {
+            "name": "Superman to Push-up",
+            "sets": 4,
+            "reps": "8-10",
+            "rest": "90s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Core & Conditioning",
+        "exercises": [
+          {
+            "name": "Dragon Flags",
+            "sets": 4,
+            "reps": "5-7",
+            "rest": "120s"
+          },
+          {
+            "name": "L-Sit",
+            "sets": 4,
+            "reps": "10-20s",
+            "rest": "90s"
+          },
+          {
+            "name": "Russian Twists",
+            "sets": 4,
+            "reps": "17-22 each side",
+            "rest": "60s"
+          },
+          {
+            "name": "Flutter Kicks",
+            "sets": 4,
+            "reps": "22-32",
+            "rest": "45s"
+          }
+        ],
+        "week": 2
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Yoga Flow",
+            "sets": 2,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Mobility Work",
+            "sets": 2,
+            "reps": "15 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Light Cardio",
+            "sets": 2,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 2
+      }
+    ],
+    [
+      {
+        "name": "Push Day - Chest & Triceps",
+        "exercises": [
+          {
+            "name": "Standard Push-ups",
+            "sets": 6,
+            "reps": "11-15",
+            "rest": "90s"
+          },
+          {
+            "name": "Diamond Push-ups",
+            "sets": 5,
+            "reps": "9-13",
+            "rest": "90s"
+          },
+          {
+            "name": "Archer Push-ups",
+            "sets": 5,
+            "reps": "7-9 each side",
+            "rest": "90s"
+          },
+          {
+            "name": "Tricep Dips (using chair)",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "75s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Pull Day - Back & Biceps",
+        "exercises": [
+          {
+            "name": "Pull-ups",
+            "sets": 6,
+            "reps": "9-13",
+            "rest": "90s"
+          },
+          {
+            "name": "Wide Grip Pull-ups",
+            "sets": 5,
+            "reps": "8-11",
+            "rest": "90s"
+          },
+          {
+            "name": "Inverted Rows",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "75s"
+          },
+          {
+            "name": "Chin-ups",
+            "sets": 5,
+            "reps": "7-11",
+            "rest": "90s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Legs & Core",
+        "exercises": [
+          {
+            "name": "Pistol Squats",
+            "sets": 5,
+            "reps": "6-8 each leg",
+            "rest": "120s"
+          },
+          {
+            "name": "Bulgarian Split Squats",
+            "sets": 5,
+            "reps": "9-11 each leg",
+            "rest": "90s"
+          },
+          {
+            "name": "Calf Raises",
+            "sets": 6,
+            "reps": "18-23",
+            "rest": "60s"
+          },
+          {
+            "name": "Hanging Leg Raises",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "75s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Upper Body Mixed",
+        "exercises": [
+          {
+            "name": "Push-ups",
+            "sets": 5,
+            "reps": "13-18",
+            "rest": "75s"
+          },
+          {
+            "name": "Pull-ups",
+            "sets": 5,
+            "reps": "9-13",
+            "rest": "90s"
+          },
+          {
+            "name": "Dips",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "75s"
+          },
+          {
+            "name": "Plank",
+            "sets": 5,
+            "reps": "45-60s",
+            "rest": "60s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Burpees",
+            "sets": 5,
+            "reps": "9-13",
+            "rest": "90s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 5,
+            "reps": "23-33 each leg",
+            "rest": "60s"
+          },
+          {
+            "name": "Jump Squats",
+            "sets": 5,
+            "reps": "11-15",
+            "rest": "75s"
+          },
+          {
+            "name": "Superman to Push-up",
+            "sets": 5,
+            "reps": "9-11",
+            "rest": "90s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Core & Conditioning",
+        "exercises": [
+          {
+            "name": "Dragon Flags",
+            "sets": 5,
+            "reps": "6-8",
+            "rest": "120s"
+          },
+          {
+            "name": "L-Sit",
+            "sets": 5,
+            "reps": "10-20s",
+            "rest": "90s"
+          },
+          {
+            "name": "Russian Twists",
+            "sets": 5,
+            "reps": "18-23 each side",
+            "rest": "60s"
+          },
+          {
+            "name": "Flutter Kicks",
+            "sets": 5,
+            "reps": "23-33",
+            "rest": "45s"
+          }
+        ],
+        "week": 3
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Yoga Flow",
+            "sets": 3,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Mobility Work",
+            "sets": 3,
+            "reps": "15 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Light Cardio",
+            "sets": 3,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 3
+      }
+    ],
+    [
+      {
+        "name": "Push Day - Chest & Triceps",
+        "exercises": [
+          {
+            "name": "Standard Push-ups",
+            "sets": 6,
+            "reps": "12-16",
+            "rest": "76s"
+          },
+          {
+            "name": "Diamond Push-ups",
+            "sets": 5,
+            "reps": "10-14",
+            "rest": "76s"
+          },
+          {
+            "name": "Archer Push-ups",
+            "sets": 5,
+            "reps": "8-10 each side",
+            "rest": "76s"
+          },
+          {
+            "name": "Tricep Dips (using chair)",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "63s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Pull Day - Back & Biceps",
+        "exercises": [
+          {
+            "name": "Pull-ups",
+            "sets": 6,
+            "reps": "10-14",
+            "rest": "76s"
+          },
+          {
+            "name": "Wide Grip Pull-ups",
+            "sets": 5,
+            "reps": "9-12",
+            "rest": "76s"
+          },
+          {
+            "name": "Inverted Rows",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "63s"
+          },
+          {
+            "name": "Chin-ups",
+            "sets": 5,
+            "reps": "8-12",
+            "rest": "76s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Legs & Core",
+        "exercises": [
+          {
+            "name": "Pistol Squats",
+            "sets": 5,
+            "reps": "7-9 each leg",
+            "rest": "102s"
+          },
+          {
+            "name": "Bulgarian Split Squats",
+            "sets": 5,
+            "reps": "10-12 each leg",
+            "rest": "76s"
+          },
+          {
+            "name": "Calf Raises",
+            "sets": 6,
+            "reps": "19-24",
+            "rest": "51s"
+          },
+          {
+            "name": "Hanging Leg Raises",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "63s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Upper Body Mixed",
+        "exercises": [
+          {
+            "name": "Push-ups",
+            "sets": 5,
+            "reps": "14-19",
+            "rest": "63s"
+          },
+          {
+            "name": "Pull-ups",
+            "sets": 5,
+            "reps": "10-14",
+            "rest": "76s"
+          },
+          {
+            "name": "Dips",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "63s"
+          },
+          {
+            "name": "Plank",
+            "sets": 5,
+            "reps": "45-60s",
+            "rest": "51s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Full Body Circuit",
+        "exercises": [
+          {
+            "name": "Burpees",
+            "sets": 5,
+            "reps": "10-14",
+            "rest": "76s"
+          },
+          {
+            "name": "Mountain Climbers",
+            "sets": 5,
+            "reps": "24-34 each leg",
+            "rest": "51s"
+          },
+          {
+            "name": "Jump Squats",
+            "sets": 5,
+            "reps": "12-16",
+            "rest": "63s"
+          },
+          {
+            "name": "Superman to Push-up",
+            "sets": 5,
+            "reps": "10-12",
+            "rest": "76s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Core & Conditioning",
+        "exercises": [
+          {
+            "name": "Dragon Flags",
+            "sets": 5,
+            "reps": "7-9",
+            "rest": "102s"
+          },
+          {
+            "name": "L-Sit",
+            "sets": 5,
+            "reps": "10-20s",
+            "rest": "76s"
+          },
+          {
+            "name": "Russian Twists",
+            "sets": 5,
+            "reps": "19-24 each side",
+            "rest": "51s"
+          },
+          {
+            "name": "Flutter Kicks",
+            "sets": 5,
+            "reps": "24-34",
+            "rest": "38s"
+          }
+        ],
+        "week": 4
+      },
+      {
+        "name": "Active Recovery",
+        "exercises": [
+          {
+            "name": "Yoga Flow",
+            "sets": 3,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Mobility Work",
+            "sets": 3,
+            "reps": "15 minutes",
+            "rest": "N/A"
+          },
+          {
+            "name": "Light Cardio",
+            "sets": 3,
+            "reps": "20 minutes",
+            "rest": "N/A"
+          }
+        ],
+        "week": 4
+      }
+    ]
+  ]
+}
