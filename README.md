@@ -14,5 +14,3 @@ This is a web application for generating personalized calisthenics routines base
 - ML-based level prediction
 - Medical condition alternatives
 - 4-week progression plan
-
-Replace the dummy dataset with actual client data for authenticity.
