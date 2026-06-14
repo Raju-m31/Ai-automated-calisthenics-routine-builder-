@@ -8,6 +8,7 @@ import os
 from datetime import datetime, timedelta
 from config import SQLALCHEMY_DATABASE_URI, SQLALCHEMY_TRACK_MODIFICATIONS
 from models import db, Client, Routine, Session
+from routine_builder import build_level_routines
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
@@ -21,7 +22,7 @@ with app.app_context():
         print(f"[OK] Database connected: {client_count} clients found")
     except Exception as e:
         print(f"[WARN] Database not ready: {e}")
-        print("   Run setup_database.py to initialize")
+        print("   Run reset_database.py to initialize")
 
 # Training data for ML model
 synthetic_data = {
@@ -44,10 +45,17 @@ train_score = model.score(X_train, y_train)
 test_score = model.score(X_test, y_test)
 print(f"Model: Training={train_score:.2%}, Test={test_score:.2%}")
 
+# Build routines from Excel file
+print("\nBuilding routines from Excel sheets...")
+try:
+    level_routines = build_level_routines()
+    print("[OK] Routines loaded successfully!")
+except Exception as e:
+    print(f"[WARN] Error loading routines: {e}")
+    level_routines = {}
+
 # Goal routines and other configs...
 goal_routines = {'strength': {'focus_days': [1, 2, 3], 'key_exercises': ['Push-ups', 'Pull-ups', 'Dips', 'Pistol Squats'], 'progression': ['Week 1-2: Build base strength', 'Week 3-4: Increase volume', 'Week 5-6: Add variations', 'Week 7-8: Progressive overload']}}
-
-weekly_routines = {'beginner': {'day1': {'name': 'Upper Body Push Focus', 'exercises': [{'name': 'Wall Push-ups', 'sets': 3, 'reps': '8-12', 'rest': '60s'}, {'name': 'Knee Push-ups', 'sets': 3, 'reps': '6-10', 'rest': '60s'}, {'name': 'Plank', 'sets': 3, 'reps': '20-30s', 'rest': '45s'}, {'name': 'Wall Sit', 'sets': 3, 'reps': '15-25s', 'rest': '45s'}]}}, 'intermediate': {'day1': {'name': 'Push Day', 'exercises': [{'name': 'Standard Push-ups', 'sets': 4, 'reps': '8-12', 'rest': '90s'}]}}, 'advanced': {'day1': {'name': 'Push Power Day', 'exercises': [{'name': 'One-Arm Push-ups', 'sets': 4, 'reps': '3-5 each arm', 'rest': '120s'}]}}, 'expert': {'day1': {'name': 'Elite Push Mastery', 'exercises': [{'name': 'One-Arm Planche Push-ups', 'sets': 4, 'reps': '2-4 each arm', 'rest': '180s'}]}}}
 
 medical_alternatives = {'shoulder_injury': {'modifications': 'Avoid overhead pressing', 'alternatives': ['Wall push-ups only', 'Floor press variations']}}
 
@@ -56,20 +64,6 @@ def analyze_medical_reason(text):
     if 'shoulder' in text_lower:
         return {'issue': 'shoulder_injury', 'summary': 'Shoulder limitation: use lower-load variations'}
     return {'issue': '', 'summary': 'Medical note received'}
-
-def create_4week_progression(routine, level):
-    import copy
-    four_weeks = []
-    for week in range(1, 5):
-        week_routine = []
-        for day in range(1, 8):
-            day_key = f'day{day}'
-            if day_key in routine:
-                day_data = copy.deepcopy(routine[day_key])
-                day_data['week'] = week
-                week_routine.append(day_data)
-        four_weeks.append(week_routine)
-    return four_weeks
 
 # ============ ROUTES ============
 
@@ -105,48 +99,181 @@ def api_create_client():
     """Create new client"""
     data = request.get_json()
     with app.app_context():
-        client = Client(
-            name=data.get('name'),
-            goal=data.get('goal'),
-            push_ups=data.get('push_ups', 0),
-            pull_ups=data.get('pull_ups', 0),
-            skill_level=data.get('skill_level', 'beginner'),
-            medical_conditions=data.get('medical_conditions')
-        )
-        db.session.add(client)
-        db.session.commit()
-        return jsonify(client.to_dict()), 201
+        try:
+            client = Client(
+                name=data.get('name'),
+                goal=data.get('goal'),
+                push_ups=data.get('push_ups', 0),
+                pull_ups=data.get('pull_ups', 0),
+                skill_level=data.get('skill_level', 'beginner'),
+                medical_conditions=data.get('medical_conditions')
+            )
+            db.session.add(client)
+            db.session.commit()
+            return jsonify(client.to_dict()), 201
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({'error': f'Failed to create client: {str(e)}'}), 500
 
 @app.route('/api/client/<int:client_id>', methods=['PUT'])
 def api_update_client(client_id):
     """Update client"""
     data = request.get_json()
     with app.app_context():
-        client = Client.query.get(client_id)
-        if not client:
-            return jsonify({'error': 'Client not found'}), 404
-        
-        client.name = data.get('name', client.name)
-        client.goal = data.get('goal', client.goal)
-        client.push_ups = data.get('push_ups', client.push_ups)
-        client.pull_ups = data.get('pull_ups', client.pull_ups)
-        client.skill_level = data.get('skill_level', client.skill_level)
-        client.medical_conditions = data.get('medical_conditions', client.medical_conditions)
-        
-        db.session.commit()
-        return jsonify(client.to_dict())
+        try:
+            client = Client.query.get(client_id)
+            if not client:
+                return jsonify({'error': 'Client not found'}), 404
+            
+            client.name = data.get('name', client.name)
+            client.goal = data.get('goal', client.goal)
+            client.push_ups = data.get('push_ups', client.push_ups)
+            client.pull_ups = data.get('pull_ups', client.pull_ups)
+            client.skill_level = data.get('skill_level', client.skill_level)
+            client.medical_conditions = data.get('medical_conditions', client.medical_conditions)
+            
+            db.session.commit()
+            return jsonify(client.to_dict())
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({'error': f'Failed to update client: {str(e)}'}), 500
 
 @app.route('/api/client/<int:client_id>', methods=['DELETE'])
 def api_delete_client(client_id):
     """Delete client"""
     with app.app_context():
-        client = Client.query.get(client_id)
-        if not client:
-            return jsonify({'error': 'Client not found'}), 404
+        try:
+            client = Client.query.get(client_id)
+            if not client:
+                return jsonify({'error': 'Client not found'}), 404
+            
+            db.session.delete(client)
+            db.session.commit()
+            return jsonify({'success': True})
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({'error': f'Failed to delete client: {str(e)}'}), 500
+
+# ============ ROUTINE API ENDPOINTS ============
+
+@app.route('/api/routines', methods=['GET'])
+def api_get_routines():
+    """Get all routines or filter by client_id"""
+    client_id = request.args.get('client_id', type=int)
+    with app.app_context():
+        if client_id:
+            routines = Routine.query.filter_by(client_id=client_id).all()
+        else:
+            routines = Routine.query.all()
+        return jsonify([routine.to_dict() for routine in routines])
+
+@app.route('/api/routine', methods=['POST'])
+def api_create_routine():
+    """Create new routine"""
+    data = request.get_json()
+    with app.app_context():
+        try:
+            routine = Routine(
+                client_id=data.get('client_id'),
+                week=data.get('week', 1),
+                day=data.get('day'),
+                exercise=data.get('exercise'),
+                sets=data.get('sets', 3),
+                reps=data.get('reps'),
+                notes=data.get('notes')
+            )
+            db.session.add(routine)
+            db.session.commit()
+            return jsonify(routine.to_dict()), 201
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({'error': f'Failed to create routine: {str(e)}'}), 500
+
+@app.route('/api/routine/<int:routine_id>', methods=['PUT'])
+def api_update_routine(routine_id):
+    """Update routine"""
+    data = request.get_json()
+    with app.app_context():
+        try:
+            routine = Routine.query.get(routine_id)
+            if not routine:
+                return jsonify({'error': 'Routine not found'}), 404
+            
+            routine.week = data.get('week', routine.week)
+            routine.day = data.get('day', routine.day)
+            routine.exercise = data.get('exercise', routine.exercise)
+            routine.sets = data.get('sets', routine.sets)
+            routine.reps = data.get('reps', routine.reps)
+            routine.notes = data.get('notes', routine.notes)
+            
+            db.session.commit()
+            return jsonify(routine.to_dict())
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({'error': f'Failed to update routine: {str(e)}'}), 500
+
+@app.route('/api/routine/<int:routine_id>', methods=['DELETE'])
+def api_delete_routine(routine_id):
+    """Delete routine"""
+    with app.app_context():
+        try:
+            routine = Routine.query.get(routine_id)
+            if not routine:
+                return jsonify({'error': 'Routine not found'}), 404
+            
+            db.session.delete(routine)
+            db.session.commit()
+            return jsonify({'success': True})
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({'error': f'Failed to delete routine: {str(e)}'}), 500
+
+@app.route('/database/schema')
+def database_schema():
+    """Display database schema in graphical format"""
+    with app.app_context():
+        schema_info = {}
         
-        db.session.delete(client)
-        db.session.commit()
-        return jsonify({'success': True})
+        # Get all models
+        models = {
+            'clients': Client,
+            'routines': Routine,
+            'sessions': Session
+        }
+        
+        for name, model in models.items():
+            columns = []
+            for column in model.__table__.columns:
+                col_info = {
+                    'name': column.name,
+                    'type': str(column.type),
+                    'nullable': column.nullable,
+                    'primary_key': column.primary_key,
+                    'foreign_key': False
+                }
+                # Check for foreign key
+                for fk in model.__table__.foreign_keys:
+                    if fk.parent.name == column.name:
+                        col_info['foreign_key'] = True
+                        col_info['references'] = str(fk.column)
+                columns.append(col_info)
+            
+            # Get record count
+            record_count = model.query.count()
+            
+            schema_info[name] = {
+                'columns': columns,
+                'record_count': record_count,
+                'relationships': []
+            }
+        
+        # Add relationship info
+        schema_info['clients']['relationships'] = [
+            {'type': 'one-to-many', 'target': 'routines', 'via': 'client_id'},
+            {'type': 'one-to-many', 'target': 'sessions', 'via': 'client_id'}
+        ]
+        
+        return render_template('database_schema.html', schema=schema_info)
 
 @app.route('/generate', methods=['POST'])
 def generate():
@@ -166,10 +293,18 @@ def generate():
         chosen_issue = analysis.get('issue', '') or chosen_issue
         medical_summary = analysis.get('summary', '')
 
-    routine = weekly_routines.get(level, weekly_routines['beginner'])
-    four_week_plan = create_4week_progression(routine, level)
-    weekly_plan = four_week_plan[0]
-
+    # Get routine for this level
+    routines = level_routines.get(level, [])
+    if routines:
+        selected_routine = routines[0]  # Use first routine for this level
+        seven_day_routine = selected_routine['seven_day']
+        four_week_plan = selected_routine['four_week']
+    else:
+        # Fallback to default structure
+        seven_day_routine = {f'day{i}': {'name': f'Day {i}', 'exercises': []} for i in range(1, 8)}
+        four_week_plan = [[{'name': f'Day {i}', 'exercises': []} for i in range(1, 8)]]
+    
+    weekly_plan = seven_day_routine
     progression_tips = goal_routines.get(goal, {}).get('progression', ["Week 1-2: Focus on form", "Week 3-4: Increase reps", "Week 5-6: Add variations", "Week 7-8: Increase intensity"])
 
     import uuid
@@ -188,9 +323,13 @@ def generate():
     }
     
     with app.app_context():
-        session = Session(client_id=1, session_data=goal_data)
-        db.session.add(session)
-        db.session.commit()
+        try:
+            session = Session(client_id=1, session_data=goal_data)
+            db.session.add(session)
+            db.session.commit()
+        except Exception as e:
+            print(f"[WARN] Could not save session to database: {e}")
+            db.session.rollback()
 
     return render_template('result.html',
                          weekly_plan=weekly_plan,
@@ -207,5 +346,10 @@ def generate():
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()
+        try:
+            db.create_all()
+            print("[OK] Database tables created/verified successfully!")
+        except Exception as e:
+            print(f"[WARN] Could not initialize database tables: {e}")
+            print("  Make sure MySQL server is running and reset_database.py has been executed")
     app.run(debug=True, host='0.0.0.0', port=5000)
